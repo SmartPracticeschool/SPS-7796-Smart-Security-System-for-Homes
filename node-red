@@ -1,0 +1,565 @@
+[
+    {
+        "id": "90f4434f.c70c5",
+        "type": "tab",
+        "label": "Flow 6",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6a47df3.8e7502",
+        "type": "http in",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "url": "/data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 620,
+        "wires": [
+            [
+                "32e57678.6b7d2a"
+            ]
+        ]
+    },
+    {
+        "id": "87feff88.d9a18",
+        "type": "http response",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 620,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "32e57678.6b7d2a",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "func": "msg.payload={'temperature':global.get(\"temperature\"), 'humidity':global.get(\"humidity\"), 'smoke':global.get(\"smoke\"), 'real':global.get(\"real\")}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 620,
+        "wires": [
+            [
+                "87feff88.d9a18"
+            ]
+        ]
+    },
+    {
+        "id": "5afa7f2d.d741d",
+        "type": "ibmiot out",
+        "z": "90f4434f.c70c5",
+        "authentication": "apiKey",
+        "apiKey": "59b69771.932928",
+        "outputType": "cmd",
+        "deviceId": "HomeIOT",
+        "deviceType": "NodeMCU",
+        "eventCommandType": "home",
+        "format": "String",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 570,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "46aadaea.583bc4",
+        "type": "ui_button",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "group": "97688878.44b228",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "lighton",
+        "payloadType": "str",
+        "topic": "",
+        "x": 350,
+        "y": 780,
+        "wires": [
+            [
+                "5afa7f2d.d741d"
+            ]
+        ]
+    },
+    {
+        "id": "93339d0a.5461b",
+        "type": "ui_button",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "group": "97688878.44b228",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "lightoff",
+        "payloadType": "str",
+        "topic": "",
+        "x": 350,
+        "y": 880,
+        "wires": [
+            [
+                "5afa7f2d.d741d"
+            ]
+        ]
+    },
+    {
+        "id": "fe10a811.a957c8",
+        "type": "ibmiot in",
+        "z": "90f4434f.c70c5",
+        "authentication": "apiKey",
+        "apiKey": "59b69771.932928",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "HomeIOT",
+        "applicationId": "",
+        "deviceType": "MyDevice",
+        "eventType": "Data",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": false,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "60796725.323f08",
+                "4ffe76fc.5ca9a8",
+                "89a1722d.c8d1d",
+                "602db61.7b83548"
+            ]
+        ]
+    },
+    {
+        "id": "f210d047.834c8",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "60796725.323f08",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "Temperature",
+        "func": "global.set('temperature',msg.payload.temperature);\nmsg.payload = msg.payload.temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "f210d047.834c8",
+                "4622e4b8.55473c"
+            ]
+        ]
+    },
+    {
+        "id": "89a1722d.c8d1d",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "Humidity",
+        "func": "global.set('humidity',msg.payload.humidity);\nmsg.payload = msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "f210d047.834c8",
+                "6d14a06f.dfb3e"
+            ]
+        ]
+    },
+    {
+        "id": "4622e4b8.55473c",
+        "type": "ui_gauge",
+        "z": "90f4434f.c70c5",
+        "name": "Temperature",
+        "group": "97688878.44b228",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°F",
+        "format": "{{value}}",
+        "min": "-10",
+        "max": "130",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6d14a06f.dfb3e",
+        "type": "ui_gauge",
+        "z": "90f4434f.c70c5",
+        "name": "Humidity",
+        "group": "97688878.44b228",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 700,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "6c4cdf1.6afa72",
+        "type": "http in",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "url": "/cmd",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 1020,
+        "wires": [
+            [
+                "2a44bd20.2bf3a2"
+            ]
+        ]
+    },
+    {
+        "id": "a595ecd4.f3d84",
+        "type": "http response",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 630,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "2a44bd20.2bf3a2",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "func": "msg.payload = msg.payload.command\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 440,
+        "y": 1020,
+        "wires": [
+            [
+                "a595ecd4.f3d84",
+                "5afa7f2d.d741d",
+                "686c40a0.f603c"
+            ]
+        ]
+    },
+    {
+        "id": "686c40a0.f603c",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "4ffe76fc.5ca9a8",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "Smoke",
+        "func": "global.set('smoke',msg.payload.smoke);\nmsg.payload = msg.payload.smoke;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "f210d047.834c8"
+            ]
+        ]
+    },
+    {
+        "id": "602db61.7b83548",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "baa549e6.bc3148",
+        "type": "visual-recognition-v3",
+        "z": "90f4434f.c70c5",
+        "name": "test",
+        "vr-service-endpoint": "https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/49299e1d-2057-47ca-ad10-8f694727e7ce",
+        "image-feature": "classifyImage",
+        "lang": "en",
+        "x": 490,
+        "y": 1240,
+        "wires": [
+            [
+                "ecf2a6d7.b7bad8",
+                "4d2d1e92.3a1b9"
+            ]
+        ]
+    },
+    {
+        "id": "3d85fa6e.0009a6",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "func": "msg.params={\"classifier_ids\":\"DefaultCustomModel_1698588367\"}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 345,
+        "y": 1104,
+        "wires": [
+            [
+                "baa549e6.bc3148"
+            ]
+        ]
+    },
+    {
+        "id": "ecf2a6d7.b7bad8",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "func": "msg.payload = msg.result.images[0].classifiers[0].classes\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 456,
+        "y": 1349,
+        "wires": [
+            [
+                "ec55eedd.bb166",
+                "66d13b76.7bcb34",
+                "4345b919.6121e8"
+            ]
+        ]
+    },
+    {
+        "id": "ec55eedd.bb166",
+        "type": "ui_template",
+        "z": "90f4434f.c70c5",
+        "group": "97688878.44b228",
+        "name": "",
+        "order": 1,
+        "width": "26",
+        "height": "11",
+        "format": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <title>Visual Recognition</title>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n  <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n  <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n  <style>\n  .bg-light {\n    background-color: #00838F!important;\n\t}\n\th4 {\n    color: #fff;\n\t}\n\t\n\t.custom-file {\n\t\tmargin-bottom: 14px;\n\t\t}\n\t\t\n\t.table .thead-dark th {\n\t\tcolor: #fff;\n\t\tbackground-color: #307d76;\n\t\tborder-color: #307d76;\n\t}\n\th5{\n\t    text-align: center;\n\t\t    color: #bd6666;\n\t\t}\n\t\t.text-center {\n\t\t  text-align: center;\n\t\t}\n\t.imgdiv\n\t{\n\t\talign:center;\n\t}\n\t</style>\n</head>\n<body>\n\t<nav class=\"navbar navbar-expand-sm bg-light\">\n\t\t<div class=\"justify-content-center\">\n\t\t\t<h4 class=\"text-center\">Object Detection using Visual Recognition </h4>\n\t\t</div>\n\t</nav>\n\t<br><br>\n    <div class=\"container\">\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-2\">\n\t\t\t</div>\n\t\t\t<div class=\"col-sm-8\">\n\t\t\t\t\n\t\t\t\t\t<div class=\"custom-file\">\n\t\t\t\t\t\n\t\t\t\t\t\t<input type=\"file\" name=\"pic\" accept=\"image/*\" onchange=\"readURL(this);\" class=\"custom-file-input\" id=\"customFile\">\n\t\t\t\t\t\t\n\t\t\t\t\t\t<label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<br>\n\t\t\t\t\t<div class=\"imgdiv\">\n\t\t\t\t\t\t<img src=\"#\" id=\"blah\" class=\"rounded\" alt=\"Selected Image\">\n\t\t\t\t\t</div>\n\t\t\t\t\t<!--<md-button ng-click=\"send({payload:action()})\">\n\t\t\t\t\t\tPredict\n\t\t\t\t\t</md-button>-->\n\t\t\t\t\t<button type=\"submit\" ng-click=\"send({payload:action()})\" class=\"btn btn-success\">Submit</button>\n\t\t\t\t\n\t\t\t\t\n\t\t\t</div>\n\t\t\t<div class=\"col-sm-2\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col-sm-2\">\n\t\t\t</div>\n\t\t\t<div class=\"col-sm-8\">\n\t\t\t<h5> The Recognised Objects  </h5>\n\t\t\t<table class=\"table\">\n\t\t\t\t<thead class=\"thead-dark\">\n\t\t\t\t  <tr>\n\t\t\t\t\t<th>Class</th>\n\t\t\t\t\t<th>Score</th>\n\t\t\t\t  </tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody id=\"scoretable\">\n\t\t\t\t</tbody>\n\t\t\t  </table>\n\t\t\t  \n\t\t\t </div>\n\t\t\t<div class=\"col-sm-2\">\n\t\t\t</div>\n\t</div>\t\n</body>\n</html>\n<script>\nvar x=\"\";\n    function readURL(input) {\n        if (input.files && input.files[0]) {\n            var reader = new FileReader();\n\n            reader.onload = function (e) {\n                $('#blah')\n                    .attr('src', e.target.result)\n                    .width(150)\n                    .height(200);\n            };\n\n            reader.readAsDataURL(input.files[0]);\n            x= input.files[0]\n\n            \n            \n\n        }\n    }\n    function getdata(data)\n\t{\n\t\t var html = '';\n            if(data != 0)\n\t\t\t{\n\t\t\t\t$.each(data, function(i){\n\t\t\t\tvar row = data[i];\n\t\t\t\tconsole.log(row);\n\t\t\t\thtml += '<tr>';\n\t\t\t\thtml += '<td>';\n\t\t\t\thtml +=  row.class;\n\t\t\t\thtml += '</td>';\n\t\t\t\thtml += '<td>';\n\t\t\t\thtml +=  row.score;\n\t\t\t\thtml += '</td>';\n\t\t\t\thtml += '</tr>';\n\t\t\t});\n\t\t\t}\n\t\t\telse\n\t\t\t\thtml+=\"<div>No Data</div>\";\n\t\t\t$('#scoretable').html(html);\n\t}\n    (function(scope) {\n        scope.$watch('msg.payload', function(data) {\n            console.log('Position 2');\n            console.dir(data);\n            getdata(data);\n\n        });\n    })(scope);\n    \n    \n// or overwrite value in your callback function ...\nthis.scope.action = function() { return x; }\n\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 269,
+        "y": 1218,
+        "wires": [
+            [
+                "3d85fa6e.0009a6"
+            ]
+        ]
+    },
+    {
+        "id": "66d13b76.7bcb34",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "4345b919.6121e8",
+        "type": "function",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "func": "if(msg.payload[0].class == \"training_real\"){\n    global.set('real', msg.payload[0].score);\n}\n\nif(msg.payload[0].class == \"training_fake\"){\n    global.set('real', 1 - msg.payload[0].score);\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 1360,
+        "wires": [
+            [
+                "cf81509d.d517e"
+            ]
+        ]
+    },
+    {
+        "id": "cf81509d.d517e",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "4d2d1e92.3a1b9",
+        "type": "debug",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "e72f496.81490b8",
+        "type": "inject",
+        "z": "90f4434f.c70c5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59b69771.932928",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "97688878.44b228",
+        "type": "ui_group",
+        "z": "",
+        "name": "SmartHome",
+        "tab": "583386c3.e34138",
+        "order": 1,
+        "disp": true,
+        "width": "26",
+        "collapse": false
+    },
+    {
+        "id": "583386c3.e34138",
+        "type": "ui_tab",
+        "z": "",
+        "name": "SmartDash",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
