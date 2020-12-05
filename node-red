@@ -1,15 +1,15 @@
 [
     {
-        "id": "90f4434f.c70c5",
+        "id": "56cd38b2.8b3c78",
         "type": "tab",
         "label": "Flow 6",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "6a47df3.8e7502",
+        "id": "13943814.ef68c8",
         "type": "http in",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "url": "/data",
         "method": "get",
@@ -19,14 +19,14 @@
         "y": 620,
         "wires": [
             [
-                "32e57678.6b7d2a"
+                "ad4129c7.a893d8"
             ]
         ]
     },
     {
-        "id": "87feff88.d9a18",
+        "id": "5d7fdc30.f07c94",
         "type": "http response",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -35,9 +35,9 @@
         "wires": []
     },
     {
-        "id": "32e57678.6b7d2a",
+        "id": "ad4129c7.a893d8",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "func": "msg.payload={'temperature':global.get(\"temperature\"), 'humidity':global.get(\"humidity\"), 'smoke':global.get(\"smoke\"), 'real':global.get(\"real\")}\nreturn msg;",
         "outputs": 1,
@@ -48,14 +48,14 @@
         "y": 620,
         "wires": [
             [
-                "87feff88.d9a18"
+                "5d7fdc30.f07c94"
             ]
         ]
     },
     {
-        "id": "5afa7f2d.d741d",
+        "id": "b2220c84.86e07",
         "type": "ibmiot out",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "authentication": "apiKey",
         "apiKey": "59b69771.932928",
         "outputType": "cmd",
@@ -72,9 +72,9 @@
         "wires": []
     },
     {
-        "id": "46aadaea.583bc4",
+        "id": "9576f714.964498",
         "type": "ui_button",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "group": "97688878.44b228",
         "order": 4,
@@ -93,14 +93,14 @@
         "y": 780,
         "wires": [
             [
-                "5afa7f2d.d741d"
+                "b2220c84.86e07"
             ]
         ]
     },
     {
-        "id": "93339d0a.5461b",
+        "id": "f85c2dbe.192f1",
         "type": "ui_button",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "group": "97688878.44b228",
         "order": 5,
@@ -119,14 +119,14 @@
         "y": 880,
         "wires": [
             [
-                "5afa7f2d.d741d"
+                "b2220c84.86e07"
             ]
         ]
     },
     {
-        "id": "fe10a811.a957c8",
+        "id": "a8b9318b.7f01e",
         "type": "ibmiot in",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "authentication": "apiKey",
         "apiKey": "59b69771.932928",
         "inputType": "evt",
@@ -152,17 +152,17 @@
         "y": 360,
         "wires": [
             [
-                "60796725.323f08",
-                "4ffe76fc.5ca9a8",
-                "89a1722d.c8d1d",
-                "602db61.7b83548"
+                "3671308c.41e25",
+                "de15bc7d.25e43",
+                "5f79b965.9a6328",
+                "27fd8e2a.485fa2"
             ]
         ]
     },
     {
-        "id": "f210d047.834c8",
+        "id": "db741117.46d6e",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -176,9 +176,9 @@
         "wires": []
     },
     {
-        "id": "60796725.323f08",
+        "id": "3671308c.41e25",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "Temperature",
         "func": "global.set('temperature',msg.payload.temperature);\nmsg.payload = msg.payload.temperature;\nreturn msg;",
         "outputs": 1,
@@ -189,15 +189,15 @@
         "y": 220,
         "wires": [
             [
-                "f210d047.834c8",
-                "4622e4b8.55473c"
+                "db741117.46d6e",
+                "193052e1.58aedd"
             ]
         ]
     },
     {
-        "id": "89a1722d.c8d1d",
+        "id": "5f79b965.9a6328",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "Humidity",
         "func": "global.set('humidity',msg.payload.humidity);\nmsg.payload = msg.payload.humidity;\nreturn msg;",
         "outputs": 1,
@@ -208,15 +208,15 @@
         "y": 500,
         "wires": [
             [
-                "f210d047.834c8",
-                "6d14a06f.dfb3e"
+                "db741117.46d6e",
+                "aa42a9a.d120458"
             ]
         ]
     },
     {
-        "id": "4622e4b8.55473c",
+        "id": "193052e1.58aedd",
         "type": "ui_gauge",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "Temperature",
         "group": "97688878.44b228",
         "order": 2,
@@ -240,9 +240,9 @@
         "wires": []
     },
     {
-        "id": "6d14a06f.dfb3e",
+        "id": "aa42a9a.d120458",
         "type": "ui_gauge",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "Humidity",
         "group": "97688878.44b228",
         "order": 3,
@@ -266,9 +266,9 @@
         "wires": []
     },
     {
-        "id": "6c4cdf1.6afa72",
+        "id": "9428950f.e5a0d8",
         "type": "http in",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "url": "/cmd",
         "method": "get",
@@ -278,14 +278,14 @@
         "y": 1020,
         "wires": [
             [
-                "2a44bd20.2bf3a2"
+                "dc435b0.44640a8"
             ]
         ]
     },
     {
-        "id": "a595ecd4.f3d84",
+        "id": "4e45d9a2.440cc8",
         "type": "http response",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -294,9 +294,9 @@
         "wires": []
     },
     {
-        "id": "2a44bd20.2bf3a2",
+        "id": "dc435b0.44640a8",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "func": "msg.payload = msg.payload.command\nreturn msg;",
         "outputs": 1,
@@ -307,16 +307,16 @@
         "y": 1020,
         "wires": [
             [
-                "a595ecd4.f3d84",
-                "5afa7f2d.d741d",
-                "686c40a0.f603c"
+                "4e45d9a2.440cc8",
+                "b2220c84.86e07",
+                "ed50055d.b64118"
             ]
         ]
     },
     {
-        "id": "686c40a0.f603c",
+        "id": "ed50055d.b64118",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -330,9 +330,9 @@
         "wires": []
     },
     {
-        "id": "4ffe76fc.5ca9a8",
+        "id": "de15bc7d.25e43",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "Smoke",
         "func": "global.set('smoke',msg.payload.smoke);\nmsg.payload = msg.payload.smoke;\nreturn msg;",
         "outputs": 1,
@@ -343,14 +343,14 @@
         "y": 360,
         "wires": [
             [
-                "f210d047.834c8"
+                "db741117.46d6e"
             ]
         ]
     },
     {
-        "id": "602db61.7b83548",
+        "id": "27fd8e2a.485fa2",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -364,9 +364,9 @@
         "wires": []
     },
     {
-        "id": "baa549e6.bc3148",
+        "id": "4bd94765.163a48",
         "type": "visual-recognition-v3",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "test",
         "vr-service-endpoint": "https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/49299e1d-2057-47ca-ad10-8f694727e7ce",
         "image-feature": "classifyImage",
@@ -375,15 +375,15 @@
         "y": 1240,
         "wires": [
             [
-                "ecf2a6d7.b7bad8",
-                "4d2d1e92.3a1b9"
+                "cebf3ec1.eed39",
+                "981299da.5e5c38"
             ]
         ]
     },
     {
-        "id": "3d85fa6e.0009a6",
+        "id": "a77e6397.0dbb5",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "func": "msg.params={\"classifier_ids\":\"DefaultCustomModel_1698588367\"}\nreturn msg;",
         "outputs": 1,
@@ -394,14 +394,14 @@
         "y": 1104,
         "wires": [
             [
-                "baa549e6.bc3148"
+                "4bd94765.163a48"
             ]
         ]
     },
     {
-        "id": "ecf2a6d7.b7bad8",
+        "id": "cebf3ec1.eed39",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "func": "msg.payload = msg.result.images[0].classifiers[0].classes\nreturn msg;",
         "outputs": 1,
@@ -412,16 +412,16 @@
         "y": 1349,
         "wires": [
             [
-                "ec55eedd.bb166",
-                "66d13b76.7bcb34",
-                "4345b919.6121e8"
+                "f0c82f3.6c970d",
+                "f726ae6d.33be5",
+                "149bcbda.4e9b04"
             ]
         ]
     },
     {
-        "id": "ec55eedd.bb166",
+        "id": "f0c82f3.6c970d",
         "type": "ui_template",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "group": "97688878.44b228",
         "name": "",
         "order": 1,
@@ -436,14 +436,14 @@
         "y": 1218,
         "wires": [
             [
-                "3d85fa6e.0009a6"
+                "a77e6397.0dbb5"
             ]
         ]
     },
     {
-        "id": "66d13b76.7bcb34",
+        "id": "f726ae6d.33be5",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -458,9 +458,9 @@
         "wires": []
     },
     {
-        "id": "4345b919.6121e8",
+        "id": "149bcbda.4e9b04",
         "type": "function",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "func": "if(msg.payload[0].class == \"training_real\"){\n    global.set('real', msg.payload[0].score);\n}\n\nif(msg.payload[0].class == \"training_fake\"){\n    global.set('real', 1 - msg.payload[0].score);\n}\n\nreturn msg;",
         "outputs": 1,
@@ -471,14 +471,14 @@
         "y": 1360,
         "wires": [
             [
-                "cf81509d.d517e"
+                "60725f08.3e247"
             ]
         ]
     },
     {
-        "id": "cf81509d.d517e",
+        "id": "60725f08.3e247",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -492,9 +492,9 @@
         "wires": []
     },
     {
-        "id": "4d2d1e92.3a1b9",
+        "id": "981299da.5e5c38",
         "type": "debug",
-        "z": "90f4434f.c70c5",
+        "z": "56cd38b2.8b3c78",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -507,29 +507,6 @@
         "x": 820,
         "y": 1200,
         "wires": []
-    },
-    {
-        "id": "e72f496.81490b8",
-        "type": "inject",
-        "z": "90f4434f.c70c5",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
-        "repeat": "3",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Elon_Musk_Royal_Society.jpg",
-        "payloadType": "str",
-        "x": 90,
-        "y": 1080,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "59b69771.932928",
